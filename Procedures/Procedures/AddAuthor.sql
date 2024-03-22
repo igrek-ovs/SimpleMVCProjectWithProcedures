@@ -1,0 +1,6 @@
+CREATE PROCEDURE AddAuthor
+    @Name NVARCHAR(100)
+AS
+BEGIN
+    INSERT INTO Authors (Name) VALUES (@Name);
+END;

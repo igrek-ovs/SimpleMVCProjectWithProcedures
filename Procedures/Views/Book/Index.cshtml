@@ -1,0 +1,36 @@
+﻿@model List<Procedures.Models.BookViewModel>
+
+<h2>Book List</h2>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.AuthorName</td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteBook", new { bookId = book.BookId }, new { onclick = "return confirm('Are you sure you want to delete this book?');" })
+            </td>
+        </tr>
+    }
+</table>
+
+<h2>Add Book</h2>
+
+@using (Html.BeginForm("AddBook", "Book", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="Title">Title:</label>
+        <input type="text" id="Title" name="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="AuthorId">Author ID:</label>
+        <input type="text" id="AuthorId" name="AuthorId" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+}
